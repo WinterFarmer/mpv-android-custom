@@ -22,5 +22,37 @@ Follow these steps to enable real-time HRTF binaural rendering in the app:
 ### 1. Place Your `.sofa` File into the App Directory
 Download your preferred HRTF `.sofa` profile (e.g., from [sofaconvention.org](https://www.sofaconvention.org/)) and move/copy it into the `mpv-android` app data folder:
 
-```text
+~~~text
 /storage/emulated/0/Android/data/is.xyz.mpv/files/
+~~~
+
+*(Note: On Android 11+, you may need a file manager with `Android/data` access like MiXplorer, ZArchiver, or Document UI/Shizuku to copy files into this directory).*
+
+### 2. Configure `mpv.conf`
+1. Open the **mpv-android** app.
+2. Go to **Settings** ⚙️ → **Advanced** → **Edit mpv.conf**.
+3. Add the following line to your configuration:
+
+~~~ini
+af=lavfi=[sofalizer=sofa=/storage/emulated/0/Android/data/is.xyz.mpv/files/hrtf d_nh1230.sofa:type=freq]
+~~~
+
+> ⚠️ **Important:** Replace `hrtf d_nh1230.sofa` in the path above with the **exact filename** of the `.sofa` file you copied into the folder in Step 1.
+
+4. Save your changes and play any multichannel video using stereo headphones/IEMs!
+
+---
+
+## 📥 Download
+
+Grab the pre-built custom APK directly from the Releases page:
+
+👉 **[Download Latest Custom APK](../../releases)**
+
+---
+
+## 📜 Upstream & Credits
+
+- Original project: [mpv-android/mpv-android](https://github.com/mpv-android/mpv-android)
+- Spatial audio HRTF library: [hoene/libmysofa](https://github.com/hoene/libmysofa)
+- 
