@@ -1,39 +1,26 @@
-# mpv for Android
+# 🎬 mpv-android-custom (with `libmysofa` / `sofalizer`)
 
-[![Build Status](https://github.com/mpv-android/mpv-android/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/mpv-android/mpv-android/actions/workflows/build.yml)
+This repository is a custom fork of [mpv-android](https://github.com/mpv-android/mpv-android) featuring a custom-built `libmpv.so` **bundled with `libmysofa`**. 
 
-mpv-android is a video player for Android based on [libmpv](https://github.com/mpv-player/mpv).
+Unlike the standard release, this build allows you to play movies and videos with multichannel audio (5.1, 7.1, etc.) while rendering them into **binaural stereo surround sound in real-time** using FFmpeg's `sofalizer` audio filter.
 
-## Features
+> 💡 **Want offline rendering instead?** If your device struggles with real-time processing or you want to permanently bake the binaural audio + AutoEQ into your file, check out [My-SofaLizeR](https://github.com/WinterFarmer/My-SofaLizeR).
 
-* Hardware and software video decoding
-* Gesture-based seeking, volume/brightness control and more
-* libass support for styled subtitles
-* Secondary (or dual) subtitle support
-* High-quality rendering with advanced settings (scalers, debanding, interpolation, ...)
-* Play network streams with the "Open URL" function
-* Background playback, Picture-in-Picture, keyboard input supported
+---
 
-### Library?
+## ✨ What's Different in This Fork?
 
-mpv-android is **not** a library/module (AAR) you can import into your app.
+- **`libmysofa` Bundled:** Built directly into `libmpv.so`, enabling full support for `.sofa` HRTF datasets.
+- **Real-Time Spatial Audio:** Enjoy 3D binaural surround sound on the fly while watching movies without pre-rendering the video file.
 
-If you'd like to use libmpv in your app you can use our code as inspiration.
-The important parts are [`MPVLib`](app/src/main/java/is/xyz/mpv/MPVLib.kt), [`BaseMPVView`](app/src/main/java/is/xyz/mpv/BaseMPVView.kt) and the [native code](app/src/main/jni/).
-Native code is built by [these scripts](buildscripts/).
+---
 
-## Downloads
+## 🚀 How to Setup & Use `sofalizer`
 
-You can download mpv-android from the [Releases section](https://github.com/mpv-android/mpv-android/releases) or
+Follow these steps to enable real-time HRTF binaural rendering in the app:
 
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=is.xyz.mpv)
+### 1. Place Your `.sofa` File into the App Directory
+Download your preferred HRTF `.sofa` profile (e.g., from [sofaconvention.org](https://www.sofaconvention.org/)) and move/copy it into the `mpv-android` app data folder:
 
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/is.xyz.mpv)
-
-**Note**: Android TV is supported, but only available on F-Droid or by installing the APK manually.
-
-## Building from source
-
-Take a look at the [README](buildscripts/README.md) inside the `buildscripts` directory.
-
-Some other documentation can be found at this [link](http://mpv-android.github.io/mpv-android/).
+```text
+/storage/emulated/0/Android/data/is.xyz.mpv/files/
