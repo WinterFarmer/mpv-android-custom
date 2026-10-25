@@ -55,4 +55,4 @@ Grab the pre-built custom APK directly from the Releases page:
 
 - Original project: [mpv-android/mpv-android](https://github.com/mpv-android/mpv-android)
 - Spatial audio HRTF library: [hoene/libmysofa](https://github.com/hoene/libmysofa)
-- 
+  
